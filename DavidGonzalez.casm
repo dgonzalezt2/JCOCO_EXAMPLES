@@ -1,0 +1,75 @@
+Function: main/0
+Constants: None, 1, 10, "Ingrese el valor de x-> ", 0, "Ingrese un numero mayor a 0"
+Locals: x, sqroot
+Globals: print, input, int
+
+BEGIN
+    JUMP_ABSOLUTE               Inicio
+    Advertencia:
+    LOAD_GLOBAL                 0
+    LOAD_CONST                  5
+    CALL_FUNCTION               1
+
+    Inicio:
+    LOAD_CONST                  4
+    STORE_FAST                  1
+
+    LOAD_GLOBAL		            2
+    LOAD_GLOBAL		            1
+    LOAD_CONST		            3
+    CALL_FUNCTION               1
+    CALL_FUNCTION               1
+    STORE_FAST		            0
+
+    LOAD_CONST                  1
+    LOAD_FAST                   0
+    COMPARE_OP                  4
+    POP_JUMP_IF_TRUE            Advertencia
+
+    startloop:
+        SETUP_LOOP              loopWhile
+
+    loopWhile:
+
+        LOAD_CONST              1
+        LOAD_FAST               1
+        BINARY_ADD
+        STORE_FAST              1
+        
+        LOAD_FAST               1
+        LOAD_FAST               1
+        BINARY_MULTIPLY
+        LOAD_FAST               0
+        COMPARE_OP	            0   
+
+        POP_JUMP_IF_FALSE       loop01 
+
+        JUMP_ABSOLUTE           loopWhile
+                
+    loop01:  POP_BLOCK
+
+    loop02:
+
+        LOAD_FAST               1
+        LOAD_FAST               1
+        BINARY_MULTIPLY
+        LOAD_FAST               0
+        COMPARE_OP	            4
+            POP_JUMP_IF_FALSE   resultados
+            LOAD_FAST           1
+            LOAD_CONST          1
+            BINARY_SUBTRACT
+            STORE_FAST          1
+            JUMP_ABSOLUTE       resultados
+
+    resultados:
+        LOAD_GLOBAL	            0
+   	    LOAD_FAST	            1
+	    CALL_FUNCTION           1
+        JUMP_ABSOLUTE fin
+
+    fin:
+	    POP_TOP
+   	    LOAD_CONST	            0
+   	    RETURN_VALUE	
+END

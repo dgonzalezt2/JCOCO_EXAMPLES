@@ -1,0 +1,64 @@
+Function: main/0
+Constants: None, 1, "x?: ","mayor o igual 1", "El numero tiene que ser mayor o igual a 1","fin loop",0
+Locals: x,y
+Globals: print, input, int
+
+BEGIN
+    LOAD_CONST          6
+    STORE_FAST          1    
+
+    LOAD_GLOBAL		2
+    LOAD_GLOBAL		1
+    LOAD_CONST		2
+    CALL_FUNCTION   	1
+    CALL_FUNCTION       1
+    STORE_FAST		0 
+
+    LOAD_FAST           0
+    LOAD_CONST	        1 
+       
+    COMPARE_OP		   5
+        POP_JUMP_IF_FALSE  irX   
+	JUMP_ABSOLUTE	   startloop
+
+       irX: LOAD_GLOBAL    0
+	LOAD_CONST	   4
+	CALL_FUNCTION      1
+	JUMP_ABSOLUTE	   fin
+
+       startloop:
+          SETUP_LOOP              loop02
+
+        loop00:
+
+                LOAD_GLOBAL	        0
+   		LOAD_FAST	        0
+		CALL_FUNCTION           1
+
+                LOAD_FAST               0
+                LOAD_CONST              1
+                BINARY_SUBTRACT
+                STORE_FAST              0
+
+
+                LOAD_FAST               0
+                LOAD_FAST	        1 
+	        COMPARE_OP		4
+
+                POP_JUMP_IF_FALSE       loop01
+                
+
+                JUMP_ABSOLUTE           loop00
+                
+        loop01:  POP_BLOCK
+        loop02:
+                LOAD_GLOBAL	0
+   		LOAD_CONST	5
+		CALL_FUNCTION   1
+                JUMP_ABSOLUTE fin
+
+   fin:
+	POP_TOP
+   	LOAD_CONST	0
+   	RETURN_VALUE	
+END

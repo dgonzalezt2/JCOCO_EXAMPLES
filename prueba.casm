@@ -1,0 +1,23 @@
+Function: main/0
+Constants: None, 4, 6, "entro a Then ", "entro a Else "
+Locals: x, y
+Globals: print
+
+BEGIN
+    LOAD_CONST          1
+    LOAD_CONST          2
+    COMPARE_OP          0
+    POP_JUMP_IF_FALSE   irX
+        LOAD_GLOBAL     0
+        LOAD_CONST      3
+        CALL_FUNCTION   1
+        JUMP_ABSOLUTE   fin
+
+    irX: LOAD_GLOBAL    0
+         LOAD_CONST     4
+         CALL_FUNCTION  1
+
+    fin:POP_TOP
+    LOAD_CONST          0
+    RETURN_VALUE
+END
